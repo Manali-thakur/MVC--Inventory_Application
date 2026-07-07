@@ -1,0 +1,26 @@
+{
+  "name": "inventory_app",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Manali-thakur/inventory__app#readme",
+  "bugs": {
+    "url": "https://github.com/Manali-thakur/inventory__app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manali-thakur/inventory__app.git"
+  },
+  "license": "ISC",
+  "author": "Manali",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-ejs-layouts": "^2.5.1"
+  }
+}
