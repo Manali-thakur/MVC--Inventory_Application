@@ -18,7 +18,4 @@ const productcontroller = new ProductController();
 server.get("/", productcontroller.getProducts);
 server.use(express.static("src/views"));
 
-// server listening on port 3000
-server.listen(3400, () => {
-  console.log("Server is listening on port 3400");
-});
+export default server
