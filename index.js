@@ -16,6 +16,11 @@ const productcontroller = new ProductController();
 
 // middleware that goes to get product function in the src/controllers/product.controller.js file
 server.get("/", productcontroller.getProducts);
+
+// calling the getAddForm function from the productcontroller to render the new-product.ejs file
+server.get("/new", productcontroller.getAddForm);
+server.post("/", productcontroller.addNewProduct);
+
 server.use(express.static("src/views"));
 
-export default server
+export default server;

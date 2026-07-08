@@ -1,0 +1,47 @@
+<section>
+    <h1 class="mt-5 mb-4">Add New Product</h1>
+    <form action="/" method="POST" class="form-container">
+
+        <div class="mb-3 row">
+            <div class="col-sm-7">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter the Title of the product">
+            </div>
+            <div class="col-sm-5">
+                <label for="price" class="form-label">Price:</label>
+                <input type="text" class="form-control" id="price" placeholder="Price of the product">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea class="form-control" id="description"
+                placeholder="Description of the product"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category:</label>
+            <input type="text" class="form-control" id="category" placeholder="Category of the product">
+        </div>
+
+        <!-- IMAGE UPLOAD -->
+        <div class="mb-3">
+            <label for="image" class="form-label">Image-URL</label>
+            <input type="url" class="form-control" id="image">
+        </div>
+
+        <!-- <label for="rating" class="form-label">Rating:</label> -->
+
+        <div class="row">
+            <div class="col">
+                <label for="rate" class="form-label">Rating:</label>
+                <input type="text" class="form-control" id="rate" placeholder="Product Rating" aria-label="First name">
+            </div>
+            <div class="col">
+                <label for="count" class="form-label">Count:</label>
+                <input type="text" class="form-control" id="count" placeholder="Total products in stock" aria-label="Last name">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Add Product</button>
+
+    </form>
+</section>
