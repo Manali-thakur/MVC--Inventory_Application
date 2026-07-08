@@ -5,40 +5,54 @@
         <div class="mb-3 row">
             <div class="col-sm-7">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter the Title of the product">
+                <input type="text" class="form-control" id="title" placeholder="Enter the Title of the product"
+                    name="title">
             </div>
             <div class="col-sm-5">
                 <label for="price" class="form-label">Price:</label>
-                <input type="text" class="form-control" id="price" placeholder="Price of the product">
+                <input type="number" class="form-control" id="price" placeholder="Price of the product" name="price">
             </div>
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label">Description:</label>
-            <textarea class="form-control" id="description"
-                placeholder="Description of the product"></textarea>
+            <textarea class="form-control" id="description" placeholder="Description of the product"
+                name="description"></textarea>
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Category:</label>
-            <input type="text" class="form-control" id="category" placeholder="Category of the product">
+            <select class="form-select" aria-label="select" placeholder="category of the product" name="category">
+                <option selected disabled>Select a category</option>
+                <option value="cloths">Cloths</option>
+                <option value="accessories">Accessories</option>
+                <option value="electronics">Electronics</option>
+                <option value="books">Books</option>
+                <option value="furniture">Furniture</option>
+                <option value="toys">Toys</option>
+                <option value="sports">Sports</option>
+                <option value="beauty">Beauty</option>
+
+            </select>
         </div>
 
         <!-- IMAGE UPLOAD -->
         <div class="mb-3">
             <label for="image" class="form-label">Image-URL</label>
-            <input type="url" class="form-control" id="image">
+            <input type="url" class="form-control" id="image" name="image">
         </div>
 
         <!-- <label for="rating" class="form-label">Rating:</label> -->
 
         <div class="row">
             <div class="col">
-                <label for="rate" class="form-label">Rating:</label>
-                <input type="text" class="form-control" id="rate" placeholder="Product Rating" aria-label="First name">
+                <label for="rating" class="form-label">Rating:</label>
+                <input type="text" class="form-control" id="rating" placeholder="Product Rating" aria-label="rating"
+                    name="rating">
             </div>
             <div class="col">
                 <label for="count" class="form-label">Count:</label>
-                <input type="text" class="form-control" id="count" placeholder="Total products in stock" aria-label="Last name">
+                <input type="text" class="form-control" id="count" placeholder="Total products in stock"
+                    aria-label="count" name="count">
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Add Product</button>

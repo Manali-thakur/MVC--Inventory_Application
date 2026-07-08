@@ -10,6 +10,7 @@ export default class productmodel {
     __category,
     __image,
     __rating,
+    __count,
   ) {
     this.id = __id;
     this.title = __title;
@@ -18,10 +19,25 @@ export default class productmodel {
     this.category = __category;
     this.image = __image;
     this.rating = __rating;
+    this.count = __count;
   }
 
   //   return the products array
   static get() {
     return products;
+  }
+
+  static add(productObj) {
+    const newProduct = new productmodel(
+      products.length + 1,
+      productObj.title,
+      productObj.price,
+      productObj.description,
+      productObj.category,
+      productObj.image,
+      productObj.rating,
+      productObj.count,
+    );
+    products.push(newProduct);
   }
 }

@@ -10,10 +10,6 @@ export default class ProductController {
     console.log(products);
 
     res.render("products", { products: products });
-
-    // return res.sendFile(
-    //   path.join(path.resolve(), "src", "views", "products.ejs"),
-    // );
   }
 
   getAddForm(req, res) {
@@ -22,9 +18,10 @@ export default class ProductController {
 
   // receiving the data when form is submitted
   addNewProduct(req, res) {
-    // access data from form
-    console.log(req.body);
     let products = productmodel.get();
     res.render("products", { products: products });
+    // access data from form
+    console.log(req.body);
+    productmodel.add(req.body);
   }
 }
