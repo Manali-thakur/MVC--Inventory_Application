@@ -21,8 +21,8 @@ const productcontroller = new ProductController();
 server.get("/", productcontroller.getProducts);
 
 // calling the getAddForm function from the productcontroller to render the new-product.ejs file
-server.get("/new", productcontroller.getAddForm);
-server.post("/", productcontroller.addNewProduct);
+server.get("/new", productcontroller.getAddProduct);
+server.post("/", productcontroller.postAddProduct);
 
 server.use(express.static("src/views"));
 

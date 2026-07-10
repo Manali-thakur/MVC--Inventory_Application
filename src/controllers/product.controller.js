@@ -12,16 +12,40 @@ export default class ProductController {
     res.render("products", { products: products });
   }
 
-  getAddForm(req, res) {
-    return res.render("new-product");
+  getAddProduct(req, res) {
+    return res.render("new-product", { errorMessage: null });
   }
 
   // receiving the data when form is submitted
-  addNewProduct(req, res) {
-    let products = productmodel.get();
-    res.render("products", { products: products });
+  postAddProduct(req, res) {
+    // res.render("products", { products: products });
+
+    // validate the data
+    const { title, price, description, category, image, rating, count } =
+      req.body;
+    let errors = [];
+    if (!title || title.trim() == "") {
+      errors.push("Name is Required");
+    }
+    if (!price || parseFloat(price) < 1) {
+      errors.push("Price is Invalid");
+    }
+    try {
+      const validUrl = new URL(image);
+    } catch (err) {
+      errors.push("URL is Invalid");
+    }
+
+    if (errors.length > 0) {
+      return res.render("new-product", {
+        errorMessage: errors[0],
+      });
+    }
+
     // access data from form
-    console.log(req.body);
+    // console.log(req.body);
     productmodel.add(req.body);
+    let products = productmodel.get();
+    res.render("index", { products });
   }
 }

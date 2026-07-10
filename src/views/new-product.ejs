@@ -1,61 +1,71 @@
 <section>
     <h1 class="mt-5 mb-4">Add New Product</h1>
-    <form action="/" method="POST" class="form-container">
 
-        <div class="mb-3 row">
-            <div class="col-sm-7">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter the Title of the product"
-                    name="title">
-            </div>
-            <div class="col-sm-5">
-                <label for="price" class="form-label">Price:</label>
-                <input type="number" class="form-control" id="price" placeholder="Price of the product" name="price">
-            </div>
+    <% if(errorMessage){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= errorMessage %>
         </div>
+        <%}%>
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Description:</label>
-            <textarea class="form-control" id="description" placeholder="Description of the product"
-                name="description"></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="category" class="form-label">Category:</label>
-            <select class="form-select" aria-label="select" placeholder="category of the product" name="category">
-                <option selected disabled>Select a category</option>
-                <option value="cloths">Cloths</option>
-                <option value="accessories">Accessories</option>
-                <option value="electronics">Electronics</option>
-                <option value="books">Books</option>
-                <option value="furniture">Furniture</option>
-                <option value="toys">Toys</option>
-                <option value="sports">Sports</option>
-                <option value="beauty">Beauty</option>
 
-            </select>
-        </div>
+            <form action="/" method="POST" class="form-container">
 
-        <!-- IMAGE UPLOAD -->
-        <div class="mb-3">
-            <label for="image" class="form-label">Image-URL</label>
-            <input type="url" class="form-control" id="image" name="image">
-        </div>
+                <div class="mb-3 row">
+                    <div class="col-sm-7">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter the Title of the product"
+                            name="title">
+                    </div>
+                    <div class="col-sm-5">
+                        <label for="price" class="form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" placeholder="Price of the product"
+                            name="price">
+                    </div>
+                </div>
 
-        <!-- <label for="rating" class="form-label">Rating:</label> -->
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea class="form-control" id="description" placeholder="Description of the product"
+                        name="description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category:</label>
+                    <select class="form-select" aria-label="select" placeholder="category of the product"
+                        name="category">
+                        <option selected disabled>Select a category</option>
+                        <option value="cloths">Cloths</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="books">Books</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="toys">Toys</option>
+                        <option value="sports">Sports</option>
+                        <option value="beauty">Beauty</option>
 
-        <div class="row">
-            <div class="col">
-                <label for="rating" class="form-label">Rating:</label>
-                <input type="text" class="form-control" id="rating" placeholder="Product Rating" aria-label="rating"
-                    name="rating">
-            </div>
-            <div class="col">
-                <label for="count" class="form-label">Count:</label>
-                <input type="text" class="form-control" id="count" placeholder="Total products in stock"
-                    aria-label="count" name="count">
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary mt-3">Add Product</button>
+                    </select>
+                </div>
 
-    </form>
+                <!-- IMAGE UPLOAD -->
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image-URL</label>
+                    <input type="text" class="form-control" id="image" name="image">
+                </div>
+
+                <!-- <label for="rating" class="form-label">Rating:</label> -->
+
+                <div class="row">
+                    <div class="col">
+                        <label for="rating" class="form-label">Rating:</label>
+                        <input type="text" class="form-control" id="rating" placeholder="Product Rating"
+                            aria-label="rating" name="rating">
+                    </div>
+                    <div class="col">
+                        <label for="count" class="form-label">Count:</label>
+                        <input type="text" class="form-control" id="count" placeholder="Total products in stock"
+                            aria-label="count" name="count">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Add Product</button>
+
+            </form>
 </section>
