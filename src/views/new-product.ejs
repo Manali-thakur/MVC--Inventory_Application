@@ -1,11 +1,18 @@
 <section>
     <h1 class="mt-5 mb-4">Add New Product</h1>
 
+    <!-- Validation for the Error Message -->
     <% if(errorMessage){ %>
         <div class="alert alert-danger" role="alert">
-            <%= errorMessage %>
+            <ul>
+                <% errorMessage.forEach(function(msg) { %>
+                    <li>
+                        <%= msg %>
+                    </li>
+                    <% }); %>
+            </ul>
         </div>
-        <%}%>
+        <% } %>
 
 
             <form action="/" method="POST" class="form-container">

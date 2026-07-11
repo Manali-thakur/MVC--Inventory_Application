@@ -8,18 +8,24 @@ export default class ProductController {
     // return array of products model
     let products = productmodel.get();
     console.log(products);
-
-    res.render("products", { products: products });
+    res.render("products", {
+      products: products,
+      success: false,
+      errorMessage: null,
+      errors: null,
+    });
   }
 
   getAddProduct(req, res) {
-    return res.render("new-product", { errorMessage: null });
+    return res.render("new-product", {
+      errorMessage: null,
+      success: false,
+      errors: null,
+    });
   }
 
   // receiving the data when form is submitted
   postAddProduct(req, res) {
-    // res.render("products", { products: products });
-
     // validate the data
     const { title, price, description, category, image, rating, count } =
       req.body;
@@ -30,6 +36,18 @@ export default class ProductController {
     if (!price || parseFloat(price) < 1) {
       errors.push("Price is Invalid");
     }
+    if (!description || description.trim() == "") {
+      errors.push("Description is Required");
+    }
+    if (description.length > 0 && description.length < 10) {
+      errors.push("Description should be more than 10 characters");
+    }
+    if (!rating || parseFloat(rating) < 1) {
+      errors.push("Rating is Invalid");
+    }
+    if (!count || parseFloat(count) < 1) {
+      errors.push("Count is Invalid");
+    }
     try {
       const validUrl = new URL(image);
     } catch (err) {
@@ -38,7 +56,8 @@ export default class ProductController {
 
     if (errors.length > 0) {
       return res.render("new-product", {
-        errorMessage: errors[0],
+        errorMessage: errors,
+        success: false,
       });
     }
 
@@ -46,6 +65,11 @@ export default class ProductController {
     // console.log(req.body);
     productmodel.add(req.body);
     let products = productmodel.get();
-    res.render("index", { products });
+    res.status(201).render("products", {
+      products,
+      success: true,
+      errors: null,
+      errorMessage: null,
+    });
   }
 }
