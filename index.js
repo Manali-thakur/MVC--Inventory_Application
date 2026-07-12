@@ -2,6 +2,7 @@ import ProductController from "./src/controllers/product.controller.js";
 import express from "express";
 import path from "path";
 import ejsLayout from "express-ejs-layouts";
+import AddProductValidationMiddleware from "./src/middlewares/validation.middleware.js";
 
 const server = express();
 
@@ -22,7 +23,8 @@ server.get("/", productcontroller.getProducts);
 
 // calling the getAddForm function from the productcontroller to render the new-product.ejs file
 server.get("/new", productcontroller.getAddProduct);
-server.post("/", productcontroller.postAddProduct);
+// validation middleware added
+server.post("/", AddProductValidationMiddleware, productcontroller.postAddProduct);
 
 server.use(express.static("src/views"));
 
