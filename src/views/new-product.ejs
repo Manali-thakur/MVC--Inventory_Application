@@ -2,12 +2,12 @@
     <h1 class="mt-5 mb-4">Add New Product</h1>
 
     <!-- Validation for the Error Message -->
-    <% if(errorMessage){ %>
+    <% if(typeof errorMessage !== 'undefined' && errorMessage){ %>
         <div class="alert alert-danger" role="alert">
             <ul>
-                <% errorMessage.forEach(function(msg) { %>
+                <% errorMessage.forEach(function(err) { %>
                     <li>
-                        <%= msg %>
+                        <%= err.msg %>
                     </li>
                     <% }); %>
             </ul>

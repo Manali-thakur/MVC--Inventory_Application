@@ -10,27 +10,27 @@ const validateRequest = async (req, res, next) => {
 
   // 1.Setup the rules for validation.
   const rules = [
-    body("title").isEmpty().withMessage("Name is Required"),
+    body("title").notEmpty().withMessage("Name is Required"),
     body("price")
       .isFloat({ gt: 0 })
       .withMessage("Price should be a positive value"),
     body("image").isURL().withMessage("Invalid URL"),
-    body("description").isEmpty().withMessage("Description is Necessary"),
+    body("description").notEmpty().withMessage("Description is Necessary"),
     body("rating").isFloat({ gt: 0 }).withMessage("Rating should more than 0"),
     body("count").isFloat({ gt: 0 }).withMessage("Count is Invalid"),
   ];
 
   // 2.Run those Rules
-  await Promises.all(rules.map((rule) => rule.run(req)));
+  await Promise.all(rules.map((rule) => rule.run(req)));
 
   // 3. Check if there are any error after running the rules
   // will return all the errors
   var validationErrors = validationResult(req);
-  
 
-  if (errors.length > 0) {
+  // 4. if error then written the error message
+  if (!validationErrors.isEmpty()) {
     return res.render("new-product", {
-      errorMessage: errors,
+      errorMessage: validationErrors.array(),
       success: false,
     });
   }
