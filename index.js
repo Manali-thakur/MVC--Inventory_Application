@@ -24,7 +24,14 @@ server.get("/", productcontroller.getProducts);
 // calling the getAddForm function from the productcontroller to render the new-product.ejs file
 server.get("/new", productcontroller.getAddProduct);
 // validation middleware added
-server.post("/", AddProductValidationMiddleware, productcontroller.postAddProduct);
+server.post(
+  "/",
+  AddProductValidationMiddleware,
+  productcontroller.postAddProduct,
+);
+
+// updating the product
+server.get("/update-product", productcontroller.getUpdateProductView);
 
 server.use(express.static("src/views"));
 

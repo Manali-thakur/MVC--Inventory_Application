@@ -22,6 +22,11 @@ export default class productmodel {
     this.count = __count;
   }
 
+  // to check that the product exist or not
+  static getbyID(id){
+    return products.find((p) => p.id == id);
+  }
+
   //   return the products array
   static get() {
     return products;

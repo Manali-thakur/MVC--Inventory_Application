@@ -36,4 +36,19 @@ export default class ProductController {
       errorMessage: null,
     });
   }
+
+  getUpdateProductView(req, res, next) {
+    // 1, if product exist then return view else return error
+    const { id } = req.body;
+    const productFound = productmodel.getbyID(id);
+    if (productFound) {
+      res.render("update-product", {
+        product: productFound,
+        errorMessage: null,
+      });
+    } else {
+      // else return error
+      res.status(404).send("Product not found!");
+    }
+  }
 }
