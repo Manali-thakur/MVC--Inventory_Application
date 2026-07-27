@@ -1,6 +1,7 @@
 import path from "path";
 import productmodel from "../models/products.model.js";
 import { products } from "../assests/products.js";
+import { body } from "express-validator";
 
 export default class ProductController {
   // returns html file
@@ -39,7 +40,7 @@ export default class ProductController {
 
   getUpdateProductView(req, res, next) {
     // 1, if product exist then return view else return error
-    const { id } = req.body;
+    const id = req.params.id;
     const productFound = productmodel.getbyID(id);
     if (productFound) {
       res.render("update-product", {
@@ -50,5 +51,17 @@ export default class ProductController {
       // else return error
       res.status(404).send("Product not found!");
     }
+  }
+
+  postUpdateProduct(req, res) {
+    console.log("Received body:", req.body);
+    productmodel.update(req.body);
+    var products = productmodel.get();
+    res.render("index", {
+      products,
+      success: true,
+      errors: null,
+      errorMessage: null,
+    });
   }
 }

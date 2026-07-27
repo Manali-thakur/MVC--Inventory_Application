@@ -32,6 +32,12 @@ export default class productmodel {
     return products;
   }
 
+  // update
+  static update(productObj){
+    const Index = products.findIndex(p=> p.id== productObj.id);
+    products[Index] = productObj;
+  }
+
   static add(productObj) {
     const newProduct = new productmodel(
       products.length + 1,

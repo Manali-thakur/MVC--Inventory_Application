@@ -15,25 +15,26 @@
         <% } %>
 
 
-            <form action="update" method="POST" class="form-container">
+            <form action="/update-product/" method="POST" class="form-container">
+                <input type="hidden" class="form-control" id="id" name="id" value="<%= product.id %>">
 
                 <div class="mb-3 row">
                     <div class="col-sm-7">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" id="title" placeholder="Enter the Title of the product"
-                            name="title">
+                            name="title" value="<%= product.title %>">
                     </div>
                     <div class="col-sm-5">
                         <label for="price" class="form-label">Price:</label>
                         <input type="number" class="form-control" id="price" placeholder="Price of the product"
-                            name="price">
+                            name="price" value="<%= product.price %>">
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description:</label>
                     <textarea class="form-control" id="description" placeholder="Description of the product"
-                        name="description"></textarea>
+                        name="description"><%= product.description %></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Category:</label>
@@ -55,24 +56,23 @@
                 <!-- IMAGE UPLOAD -->
                 <div class="mb-3">
                     <label for="image" class="form-label">Image-URL</label>
-                    <input type="text" class="form-control" id="image" name="image">
-                </div>
+                    <input type="text" class="form-control" id="image" name="image" value="<%= product.image %>" </div>
 
-                <!-- <label for="rating" class="form-label">Rating:</label> -->
+                    <!-- <label for="rating" class="form-label">Rating:</label> -->
 
-                <div class="row">
-                    <div class="col">
-                        <label for="rating" class="form-label">Rating:</label>
-                        <input type="text" class="form-control" id="rating" placeholder="Product Rating"
-                            aria-label="rating" name="rating">
+                    <div class="row">
+                        <div class="col">
+                            <label for="rating" class="form-label">Rating:</label>
+                            <input type="text" class="form-control" id="rating" placeholder="Product Rating"
+                                aria-label="rating" name="rating" value="<%= product.rating %>">
+                        </div>
+                        <div class="col">
+                            <label for="count" class="form-label">Count:</label>
+                            <input type="text" class="form-control" id="count" placeholder="Total products in stock"
+                                aria-label="count" name="count" value="<%= product.count %>">
+                        </div>
                     </div>
-                    <div class="col">
-                        <label for="count" class="form-label">Count:</label>
-                        <input type="text" class="form-control" id="count" placeholder="Total products in stock"
-                            aria-label="count" name="count">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary mt-3">Add Product</button>
+                    <button type="submit" class="btn btn-primary mt-3">Update Product</button>
 
             </form>
 </section>

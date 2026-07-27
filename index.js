@@ -8,6 +8,8 @@ const server = express();
 
 // parse form data
 server.use(express.urlencoded({ extended: true }));
+// for JSON/AXIOS requests
+server.use(express.json());
 
 // view engine setup
 server.set("view engine", "ejs");
@@ -31,7 +33,10 @@ server.post(
 );
 
 // updating the product
-server.get("/update-product", productcontroller.getUpdateProductView);
+server.get("/update-product/:id", productcontroller.getUpdateProductView);
+
+// getting the updated product
+server.post("/update-product", productcontroller.postUpdateProduct)
 
 server.use(express.static("src/views"));
 

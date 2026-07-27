@@ -8,9 +8,9 @@
         <% } %>
 
             <!-- Table for the content -->
-             <div class="counting">
-                
-             </div>
+            <div class="counting">
+
+            </div>
 
             <table class="table table-dark table-striped">
                 <thead>
@@ -56,7 +56,8 @@
                                 <%= product.count %>
                             </td>
                             <td>
-                                <a href="/update-product.ejs" class="btn btn-warning">Update</a>
+                                <!-- passing the parameter to the url -->
+                                <a href="/update-product/<%= product.id %>" class="btn btn-warning">Update</a>
                             </td>
                         </tr>
                         <% }) %>
