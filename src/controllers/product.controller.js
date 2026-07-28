@@ -69,6 +69,7 @@ export default class ProductController {
   deleteProduct(req, res) {
     const id = req.params.id;
     const productFound = productmodel.getbyID(id);
+    var products = productmodel.get();
     if (productFound) {
       productmodel.delete(id);
       console.log(`Product id- ${id} has been deleted`);

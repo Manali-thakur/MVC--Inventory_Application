@@ -6,6 +6,9 @@ import AddProductValidationMiddleware from "./src/middlewares/validation.middlew
 
 const server = express();
 
+// folder is statically used  js file can be directly accessed by views
+server.use(express.static('public'));
+
 // parse form data
 server.use(express.urlencoded({ extended: true }));
 // for JSON/AXIOS requests
@@ -36,7 +39,7 @@ server.post(
 server.get("/update-product/:id", productcontroller.getUpdateProductView);
 
 // Deleting the product
-server.get("/delete-product/:id", productcontroller.deleteProduct);
+server.post("/delete-product/:id", productcontroller.deleteProduct);
 
 // getting the updated product
 server.post("/update-product", productcontroller.postUpdateProduct)
