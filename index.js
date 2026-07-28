@@ -35,6 +35,9 @@ server.post(
 // updating the product
 server.get("/update-product/:id", productcontroller.getUpdateProductView);
 
+// Deleting the product
+server.get("/delete-product/:id", productcontroller.deleteProduct);
+
 // getting the updated product
 server.post("/update-product", productcontroller.postUpdateProduct)
 

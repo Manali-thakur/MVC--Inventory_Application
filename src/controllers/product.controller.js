@@ -64,4 +64,23 @@ export default class ProductController {
       errorMessage: null,
     });
   }
+
+  // for deleting the product
+  deleteProduct(req, res) {
+    const id = req.params.id;
+    const productFound = productmodel.getbyID(id);
+    if (productFound) {
+      productmodel.delete(id);
+      console.log(`Product id- ${id} has been deleted`);
+      res.render("index", {
+        products,
+        success: true,
+        errors: null,
+        errorMessage: null,
+      });
+    } else {
+      // else return error
+      res.status(404).send("Product not found!");
+    }
+  }
 }

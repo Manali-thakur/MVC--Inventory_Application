@@ -23,7 +23,7 @@ export default class productmodel {
   }
 
   // to check that the product exist or not
-  static getbyID(id){
+  static getbyID(id) {
     return products.find((p) => p.id == id);
   }
 
@@ -33,9 +33,15 @@ export default class productmodel {
   }
 
   // update
-  static update(productObj){
-    const Index = products.findIndex(p=> p.id== productObj.id);
+  static update(productObj) {
+    const Index = products.findIndex((p) => p.id == productObj.id);
     products[Index] = productObj;
+  }
+
+  // delete
+  static delete(id) {
+    const Index = products.findIndex((p) => p.id == id);
+    products.splice(Index, 1);
   }
 
   static add(productObj) {
