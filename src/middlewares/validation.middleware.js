@@ -16,7 +16,14 @@ const validateRequest = async (req, res, next) => {
     body("price")
       .isFloat({ gt: 0 })
       .withMessage("Price should be a positive value"),
-    // body("image").isURL().withMessage("Invalid URL"),
+
+    // custome validation
+    body("image").custom((value, { req }) => {
+      if (!req.file) {
+        throw new Error("Image is required");
+      }
+      return true;
+    }),
     body("description").notEmpty().withMessage("Description is Necessary"),
     body("rating").isFloat({ gt: 0 }).withMessage("Rating should more than 0"),
     body("count").isFloat({ gt: 0 }).withMessage("Count is Invalid"),
