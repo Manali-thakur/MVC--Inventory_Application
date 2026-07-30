@@ -44,6 +44,9 @@ server.post("/delete-product/:id", productcontroller.deleteProduct);
 // getting the updated product
 server.post("/update-product", productcontroller.postUpdateProduct)
 
+// search product
+server.post("/search", productcontroller.searchProduct);
+
 server.use(express.static("src/views"));
 
 export default server;

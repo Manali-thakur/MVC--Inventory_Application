@@ -22,6 +22,14 @@ export default class productmodel {
     this.count = __count;
   }
 
+  // for search
+  static searchPro(title) {
+    const data = products.filter((product) =>
+      product.title.trim().toLowerCase().includes(title.trim().toLowerCase()),
+    );
+    return data;
+  }
+
   // to check that the product exist or not
   static getbyID(id) {
     return products.find((p) => p.id == id);

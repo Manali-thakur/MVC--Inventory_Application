@@ -5,3 +5,7 @@
 img {
   width: 80px;
 }
+
+header {
+  position: sticky;
+}

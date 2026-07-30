@@ -84,4 +84,17 @@ export default class ProductController {
       res.status(404).send("Product not found!");
     }
   }
+
+  // search Products
+  searchProduct(req, res) {
+    console.log("BODY RECEIVED:", req.body);
+    const { title } = req.body;
+    const data = productmodel.searchPro(title);
+    res.render("search-product", {
+      products: data,
+      success: true,
+      errors: null,
+      errorMessage: null,
+    });
+  }
 }
