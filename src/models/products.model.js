@@ -52,16 +52,16 @@ export default class productmodel {
     products.splice(Index, 1);
   }
 
-  static add(productObj) {
+  static add(title, price, description, category, image, rating, count) {
     const newProduct = new productmodel(
       products.length + 1,
-      productObj.title,
-      productObj.price,
-      productObj.description,
-      productObj.category,
-      productObj.image,
-      productObj.rating,
-      productObj.count,
+      title,
+      price,
+      description,
+      category,
+      image,
+      rating,
+      count,
     );
     products.push(newProduct);
   }

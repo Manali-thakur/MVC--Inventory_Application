@@ -15,7 +15,7 @@
         <% } %>
 
 
-            <form action="/update-product/" method="POST" class="form-container">
+            <form action="/update-product/" method="POST" class="form-container" enctype="multipart/form-data">
                 <input type="hidden" class="form-control" id="id" name="id" value="<%= product.id %>">
 
                 <div class="mb-3 row">
@@ -56,23 +56,25 @@
                 <!-- IMAGE UPLOAD -->
                 <div class="mb-3">
                     <label for="image" class="form-label">Image-URL</label>
-                    <input type="text" class="form-control" id="image" name="image" value="<%= product.image %>" </div>
+                    <input type="file" class="form-control" id="image" name="image" value="<%= product.image %>"
+                        accept="images/*" />
+                </div>
 
-                    <!-- <label for="rating" class="form-label">Rating:</label> -->
+                <!-- <label for="rating" class="form-label">Rating:</label> -->
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="rating" class="form-label">Rating:</label>
-                            <input type="text" class="form-control" id="rating" placeholder="Product Rating"
-                                aria-label="rating" name="rating" value="<%= product.rating %>">
-                        </div>
-                        <div class="col">
-                            <label for="count" class="form-label">Count:</label>
-                            <input type="text" class="form-control" id="count" placeholder="Total products in stock"
-                                aria-label="count" name="count" value="<%= product.count %>">
-                        </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="rating" class="form-label">Rating:</label>
+                        <input type="text" class="form-control" id="rating" placeholder="Product Rating"
+                            aria-label="rating" name="rating" value="<%= product.rating %>">
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Update Product</button>
+                    <div class="col">
+                        <label for="count" class="form-label">Count:</label>
+                        <input type="text" class="form-control" id="count" placeholder="Total products in stock"
+                            aria-label="count" name="count" value="<%= product.count %>">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Update Product</button>
 
             </form>
 </section>

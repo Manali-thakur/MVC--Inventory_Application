@@ -3,11 +3,12 @@ import express from "express";
 import path from "path";
 import ejsLayout from "express-ejs-layouts";
 import AddProductValidationMiddleware from "./src/middlewares/validation.middleware.js";
+import { uploadFile } from "./src/middlewares/file-upload.middleware.js";
 
 const server = express();
 
 // folder is statically used  js file can be directly accessed by views
-server.use(express.static('public'));
+server.use(express.static("public"));
 
 // parse form data
 server.use(express.urlencoded({ extended: true }));
@@ -28,9 +29,11 @@ server.get("/", productcontroller.getProducts);
 
 // calling the getAddForm function from the productcontroller to render the new-product.ejs file
 server.get("/new", productcontroller.getAddProduct);
-// validation middleware added
+
+// getting the requests
 server.post(
   "/",
+  uploadFile.single("image"),
   AddProductValidationMiddleware,
   productcontroller.postAddProduct,
 );
@@ -42,7 +45,7 @@ server.get("/update-product/:id", productcontroller.getUpdateProductView);
 server.post("/delete-product/:id", productcontroller.deleteProduct);
 
 // getting the updated product
-server.post("/update-product", productcontroller.postUpdateProduct)
+server.post("/update-product", productcontroller.postUpdateProduct);
 
 // search product
 server.post("/search", productcontroller.searchProduct);

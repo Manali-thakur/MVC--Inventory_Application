@@ -2,7 +2,7 @@
     <h1 class="mt-5 mb-4 header">Add New Product</h1>
 
     <!-- Validation for the Error Message -->
-    <% if(typeof errorMessage !== 'undefined' && errorMessage){ %>
+    <% if(typeof errorMessage !=='undefined' && errorMessage){ %>
         <div class="alert alert-danger" role="alert">
             <ul>
                 <% errorMessage.forEach(function(err) { %>
@@ -15,7 +15,7 @@
         <% } %>
 
 
-            <form action="/" method="POST" class="form-container">
+            <form action="/" method="POST" class="form-container" enctype="multipart/form-data">
                 <input type="hidden" class="form-control" id="id" name="id" value="">
 
                 <div class="mb-3 row">
@@ -56,7 +56,7 @@
                 <!-- IMAGE UPLOAD -->
                 <div class="mb-3">
                     <label for="image" class="form-label">Image-URL</label>
-                    <input type="text" class="form-control" id="image" name="image">
+                    <input type="file" class="form-control" id="image" name="image" accept="images/*">
                 </div>
 
                 <!-- <label for="rating" class="form-label">Rating:</label> -->

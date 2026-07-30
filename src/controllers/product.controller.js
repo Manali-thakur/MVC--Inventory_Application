@@ -28,7 +28,9 @@ export default class ProductController {
   // receiving the request and sending back
   postAddProduct(req, res, next) {
     // access data from form
-    productmodel.add(req.body);
+    const { title, price, description, category, rating, count } = req.body;
+    const image = "image/" + req.file.filename;
+    productmodel.add(title, price, description, category, image, rating, count);
     let products = productmodel.get();
     res.status(201).render("index", {
       products,
