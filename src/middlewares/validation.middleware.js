@@ -25,7 +25,10 @@ const validateRequest = async (req, res, next) => {
       return true;
     }),
     body("description").notEmpty().withMessage("Description is Necessary"),
-    body("rating").isFloat({ gt: 0 }).withMessage("Rating should more than 0"),
+    body("rating")
+      .isFloat({ gt: 0 })
+      .islength({ min: 5 })
+      .withMessage("Rating should more than 0"),
     body("count").isFloat({ gt: 0 }).withMessage("Count is Invalid"),
   ];
 

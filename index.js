@@ -1,4 +1,5 @@
 import ProductController from "./src/controllers/product.controller.js";
+import userController from "./src/controllers/user.controller.js";
 import express from "express";
 import path from "path";
 import ejsLayout from "express-ejs-layouts";
@@ -21,14 +22,17 @@ server.set("views", path.join(path.resolve(), "src", "views"));
 
 server.use(ejsLayout);
 
-// instance of productcontroller
+// instance for calling the methods
 const productcontroller = new ProductController();
+const usercontroller = new userController();
 
 // middleware that goes to get product function in the src/controllers/product.controller.js file
 server.get("/", productcontroller.getProducts);
 
 // calling the getAddForm function from the productcontroller to render the new-product.ejs file
 server.get("/new", productcontroller.getAddProduct);
+
+server.get("/register", usercontroller.getRegister);
 
 // getting the requests
 server.post(
