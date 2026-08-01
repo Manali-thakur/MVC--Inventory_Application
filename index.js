@@ -33,6 +33,10 @@ server.get("/", productcontroller.getProducts);
 server.get("/new", productcontroller.getAddProduct);
 
 server.get("/register", usercontroller.getRegister);
+server.post("/register", usercontroller.postRegister);
+
+server.get("/login", usercontroller.getLogin);
+server.post('/login', usercontroller.postLogin);
 
 // getting the requests
 server.post(

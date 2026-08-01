@@ -1,0 +1,23 @@
+<section>
+    <% if(typeof errorMessage !=='undefined' && errorMessage){ %>
+
+        <div class="alert alert-danger" role="alert">
+            <%= errorMessage %>
+        </div>
+
+        <% } %>
+            <div>
+                <h1 class="mt-5 mb-4 header">Login</h1>
+                <form action="/login" method="post">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+</section>
