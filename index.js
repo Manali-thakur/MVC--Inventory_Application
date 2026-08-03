@@ -6,7 +6,7 @@ import ejsLayout from "express-ejs-layouts";
 import AddProductValidationMiddleware from "./src/middlewares/validation.middleware.js";
 import { auth } from "./src/middlewares/auth.middleware.js";
 import { uploadFile } from "./src/middlewares/file-upload.middleware.js";
-import session from 'express-session';
+import session from "express-session";
 
 const server = express();
 
@@ -15,12 +15,14 @@ server.use(express.static("public"));
 
 // session middleware configure
 // should use the key generator for secret key.
-server.use(session({
-  secret:'Secretkey',
-  resave:false,
-  saveUninitialized:true,
-  cookie: {secure: false}, //using http protocol
-}));
+server.use(
+  session({
+    secret: "Secretkey",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, //using http protocol
+  }),
+);
 //user logged in we attach info to session and check if user is logged in or not
 
 // parse form data
@@ -39,7 +41,7 @@ const productcontroller = new ProductController();
 const usercontroller = new userController();
 
 // middleware that goes to get product function in the src/controllers/product.controller.js file
-server.get("/",auth, productcontroller.getProducts);
+server.get("/", auth, productcontroller.getProducts);
 
 // calling the getAddForm function from the productcontroller to render the new-product.ejs file
 server.get("/new", auth, productcontroller.getAddProduct);
@@ -48,27 +50,28 @@ server.get("/register", usercontroller.getRegister);
 server.post("/register", usercontroller.postRegister);
 
 server.get("/login", usercontroller.getLogin);
-server.post('/login', usercontroller.postLogin);
+server.post("/login", usercontroller.postLogin);
 
 // getting the requests
 server.post(
   "/",
+  auth,
   uploadFile.single("image"),
   AddProductValidationMiddleware,
   productcontroller.postAddProduct,
 );
 
 // updating the product
-server.get("/update-product/:id", productcontroller.getUpdateProductView);
+server.get("/update-product/:id", auth, productcontroller.getUpdateProductView);
 
 // Deleting the product
-server.post("/delete-product/:id", productcontroller.deleteProduct);
+server.post("/delete-product/:id", auth, productcontroller.deleteProduct);
 
 // getting the updated product
-server.post("/update-product", productcontroller.postUpdateProduct);
+server.post("/update-product", auth, productcontroller.postUpdateProduct);
 
 // search product
-server.post("/search",  productcontroller.searchProduct);
+server.post("/search", auth, productcontroller.searchProduct);
 
 server.use(express.static("src/views"));
 
