@@ -7,11 +7,15 @@ import AddProductValidationMiddleware from "./src/middlewares/validation.middlew
 import { auth } from "./src/middlewares/auth.middleware.js";
 import { uploadFile } from "./src/middlewares/file-upload.middleware.js";
 import session from "express-session";
+import cookieParser from "cookie-parser";
+import { setLastVisit } from "./src/middlewares/lastVisit.middleware.js";
 
 const server = express();
 
 // folder is statically used  js file can be directly accessed by views
 server.use(express.static("public"));
+server.use(cookieParser());
+server.use(setLastVisit);
 
 // session middleware configure
 // should use the key generator for secret key.
