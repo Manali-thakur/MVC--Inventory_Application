@@ -11,6 +11,7 @@ export default class ProductController {
     console.log(products);
     res.render("index", {
       products: products,
+      userEmail: req.session.userEmail,
       success: false,
       errorMessage: null,
       errors: null,
@@ -22,6 +23,7 @@ export default class ProductController {
       errorMessage: null,
       success: false,
       errors: null,
+      userEmail: req.session.userEmail,
     });
   }
 
@@ -37,6 +39,7 @@ export default class ProductController {
       success: true,
       errors: null,
       errorMessage: null,
+      userEmail: req.session.userEmail,
     });
   }
 
@@ -48,6 +51,7 @@ export default class ProductController {
       res.render("update-product", {
         product: productFound,
         errorMessage: null,
+        userEmail: req.session.userEmail,
       });
     } else {
       // else return error

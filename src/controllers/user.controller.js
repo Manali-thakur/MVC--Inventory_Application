@@ -47,6 +47,7 @@ export default class userController {
       console.log("User found:", user);
       res.render("index", {
         products: products,
+        userEmail: req.session.userEmail,
         errorMessage: null,
         success: true,
         errors: null,
