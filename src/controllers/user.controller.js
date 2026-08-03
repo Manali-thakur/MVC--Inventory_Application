@@ -34,15 +34,17 @@ export default class userController {
     const { email, password } = req.body;
     console.log(email, password);
     const user = await usermodel.login(email, password);
-    const userFound = usermodel.getbyEmail(email);
-    if (!userFound) {
+    // const userFound = usermodel.getbyEmail(email);
+    if (!user) {
       res.render("login", {
         errorMessage: "Invalid email or password",
         success: false,
         errors: null,
       });
     } else {
-        console.log("User found:", userFound);
+      req.session.userEmail = user.email;
+      let products = productmodel.get();
+      console.log("User found:", user);
       res.render("index", {
         products: products,
         errorMessage: null,

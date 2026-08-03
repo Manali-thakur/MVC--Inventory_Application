@@ -16,13 +16,10 @@ export default class usermodel {
 
   //   login logic
   static login(email, password) {
-    const userLogin = users.filter(
+    const userLogin = users.find(
       (user) =>
-        user.email.trim().toLowerCase().includes(email.trim().toLowerCase()) &&
-        user.password
-          .trim()
-          .toLowerCase()
-          .includes(password.trim().toLowerCase()),
+        user.email.trim().toLowerCase() === email.trim().toLowerCase() &&
+        user.password.trim().toLowerCase() === password.trim().toLowerCase(),
     );
     return userLogin;
   }

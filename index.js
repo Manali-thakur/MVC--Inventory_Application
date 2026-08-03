@@ -4,12 +4,24 @@ import express from "express";
 import path from "path";
 import ejsLayout from "express-ejs-layouts";
 import AddProductValidationMiddleware from "./src/middlewares/validation.middleware.js";
+import { auth } from "./src/middlewares/auth.middleware.js";
 import { uploadFile } from "./src/middlewares/file-upload.middleware.js";
+import session from 'express-session';
 
 const server = express();
 
 // folder is statically used  js file can be directly accessed by views
 server.use(express.static("public"));
+
+// session middleware configure
+// should use the key generator for secret key.
+server.use(session({
+  secret:'Secretkey',
+  resave:false,
+  saveUninitialized:true,
+  cookie: {secure: false}, //using http protocol
+}));
+//user logged in we attach info to session and check if user is logged in or not
 
 // parse form data
 server.use(express.urlencoded({ extended: true }));
@@ -27,10 +39,10 @@ const productcontroller = new ProductController();
 const usercontroller = new userController();
 
 // middleware that goes to get product function in the src/controllers/product.controller.js file
-server.get("/", productcontroller.getProducts);
+server.get("/",auth, productcontroller.getProducts);
 
 // calling the getAddForm function from the productcontroller to render the new-product.ejs file
-server.get("/new", productcontroller.getAddProduct);
+server.get("/new", auth, productcontroller.getAddProduct);
 
 server.get("/register", usercontroller.getRegister);
 server.post("/register", usercontroller.postRegister);
@@ -56,7 +68,7 @@ server.post("/delete-product/:id", productcontroller.deleteProduct);
 server.post("/update-product", productcontroller.postUpdateProduct);
 
 // search product
-server.post("/search", productcontroller.searchProduct);
+server.post("/search",  productcontroller.searchProduct);
 
 server.use(express.static("src/views"));
 
