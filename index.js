@@ -73,6 +73,9 @@ server.post("/update-product", auth, productcontroller.postUpdateProduct);
 // search product
 server.post("/search", auth, productcontroller.searchProduct);
 
+// logout
+server.get("/logout", usercontroller.userLogout);
+
 server.use(express.static("src/views"));
 
 export default server;

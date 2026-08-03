@@ -53,4 +53,14 @@ export default class userController {
       });
     }
   }
+
+  userLogout(req, res) {
+    req.session.destroy((err) =>{
+      if(err){
+        res.status(401).send(err);
+      } else {
+        res.redirect('/login');
+      }
+    })
+  }
 }
