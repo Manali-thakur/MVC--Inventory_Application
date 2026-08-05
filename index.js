@@ -15,7 +15,7 @@ const server = express();
 // folder is statically used  js file can be directly accessed by views
 server.use(express.static("public"));
 server.use(cookieParser());
-server.use(setLastVisit);
+// server.use(setLastVisit);
 
 // session middleware configure
 // should use the key generator for secret key.
@@ -45,7 +45,7 @@ const productcontroller = new ProductController();
 const usercontroller = new userController();
 
 // middleware that goes to get product function in the src/controllers/product.controller.js file
-server.get("/", auth, productcontroller.getProducts);
+server.get("/", auth, setLastVisit, productcontroller.getProducts);
 
 // calling the getAddForm function from the productcontroller to render the new-product.ejs file
 server.get("/new", auth, productcontroller.getAddProduct);
