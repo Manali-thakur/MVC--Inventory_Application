@@ -1,4 +1,4 @@
-<section>
+<section class="table-section">
     <article>
 
         <!-- validating data the success message -->
@@ -20,62 +20,67 @@
                 </div>
                 <h1 class="mt-5 mb-4 header" style="color: aliceblue;">Products:</h1>
 
-                <table class="table table-dark table-striped table-responsive">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Rating</th>
-                            <th scope="col">Count</th>
-                            <th colspan="4" style="text-align: center;">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <!-- view engine -->
-                        <% products.forEach((product)=> { %>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>
-                                    <%= product.id %>
-                                </td>
-                                <td>
-                                    <%= product.title %>
-                                </td>
-                                <td scope="col">
-                                    <%= product.price %>
-                                </td>
-                                <td>
-                                    <%= product.description %>
-                                </td>
-                                <td>
-                                    <%= product.category %>
-                                </td>
-                                <td>
-                                    <img src="<%= product.image %>" alt="<%= product.title %>">
-                                </td>
-                                <td>
-                                    <%= product.rating %>
-                                </td>
-                                <td>
-                                    <%= product.count %>
-                                </td>
-                                <td>
-                                    <!-- passing the parameter to the url -->
-                                    <a href="/update-product/<%= product.id %>" class="btn btn-warning">Update</a>
-
-                                    <!-- <a href="/delete-product/<%= product.id %>" class="btn btn-danger">Delete</a> -->
-                                    <button class="btn btn-danger"
-                                        onclick="deleteProduct('<%= product.id %>')">Delete</button>
-
-                                </td>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Image</th>
+                                <th>Rating</th>
+                                <th>Count</th>
+                                <th colspan="4" style="text-align: center;">Actions</th>
                             </tr>
-                            <% }) %>
+                        </thead>
+                        <tbody>
 
-                    </tbody>
-                </table>
+                            <!-- view engine -->
+                            <% products.forEach((product)=> { %>
+                                <tr>
+                                    <td>
+                                        <%= product.id %>
+                                    </td>
+                                    <td>
+                                        <%= product.title %>
+                                    </td>
+                                    <td>
+                                        <%= product.price %>
+                                    </td>
+                                    <td>
+                                        <%= product.description %>
+                                    </td>
+                                    <td>
+                                        <%= product.category %>
+                                    </td>
+                                    <td>
+                                        <img src="<%= product.image %>" alt="<%= product.title %>">
+                                    </td>
+                                    <td>
+                                        <%= product.rating %>
+                                    </td>
+                                    <td>
+                                        <%= product.count %>
+                                    </td>
+                                    <td>
+                                        <!-- passing the parameter to the url -->
+                                        <a href="/update-product/<%= product.id %>">
+                                            <button>
+                                                Update
+                                            </button>
+                                        </a>
+
+                                        <!-- <a href="/delete-product/<%= product.id %>" class="btn btn-danger">Delete</a> -->
+                                        <button onclick="deleteProduct('<%= product.id %>')">Delete</button>
+
+                                    </td>
+                                </tr>
+                                <% }) %>
+
+                        </tbody>
+                    </table>
+                </div>
     </article>
 </section>

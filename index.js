@@ -44,10 +44,8 @@ server.use(ejsLayout);
 const productcontroller = new ProductController();
 const usercontroller = new userController();
 
-// middleware that goes to get product function in the src/controllers/product.controller.js file
 server.get("/", auth, setLastVisit, productcontroller.getProducts);
 
-// calling the getAddForm function from the productcontroller to render the new-product.ejs file
 server.get("/new", auth, productcontroller.getAddProduct);
 
 server.get("/register", usercontroller.getRegister);
@@ -56,7 +54,6 @@ server.post("/register", usercontroller.postRegister);
 server.get("/login", usercontroller.getLogin);
 server.post("/login", usercontroller.postLogin);
 
-// getting the requests
 server.post(
   "/",
   auth,
@@ -65,19 +62,14 @@ server.post(
   productcontroller.postAddProduct,
 );
 
-// updating the product
 server.get("/update-product/:id", auth, productcontroller.getUpdateProductView);
 
-// Deleting the product
 server.post("/delete-product/:id", auth, productcontroller.deleteProduct);
 
-// getting the updated product
 server.post("/update-product", auth, productcontroller.postUpdateProduct);
 
-// search product
 server.post("/search", auth, productcontroller.searchProduct);
 
-// logout
 server.get("/logout", usercontroller.userLogout);
 
 server.use(express.static("src/views"));

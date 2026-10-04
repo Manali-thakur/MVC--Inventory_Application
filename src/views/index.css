@@ -1,22 +1,27 @@
-.container {
-  /* margin: 34px; */
-  height: 100vh;
+body {
+  background: radial-gradient(
+    at 20% 30%,
+    #3a0202 0%,
+    #250b0b 60%,
+    #010613 100%
+  );
+  /* border: 2px solid brown; */
+  margin: 0px;
+  border-radius: 10px;
+  padding: 0px;
 }
 
-img {
-  width: 80px;
+footer {
+  background-color: rgb(56, 55, 55);
+  text-align: center;
+  padding: 10px;
+  color: white;
 }
-
-header {
-  position: sticky;
-}
-
 .nav-link:hover {
   background-color: #191919;
   transition-duration: 0.3s;
   border-radius: 3px;
 }
-
 
 .login-section input:hover {
   border: 1px solid #191919;
@@ -26,3 +31,105 @@ header {
   color: #020202;
   text-align: center;
 }
+
+.container {
+  /* border: 2px solid brown; */
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(
+    at 20% 30%,
+    #310101 0%,
+    #301617 60%,
+    #0a0404 100%
+  );
+  box-shadow: 10px 20px 22px 22px rgba(176, 66, 7, 0.25);
+
+  .form-section {
+    margin: 40px;
+    box-shadow: 0 4px 12px 2px rgba(85, 32, 4, 0.25);
+    padding: 1%;
+    border: 2px solid black;
+    width: 50%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: ivory;
+    border-radius: 10px;
+
+    article {
+      padding: 2%;
+      border: 2px solid brown;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+
+      form {
+        /* border: 2px solid black; */
+        padding: 1%;
+      }
+
+      h1 {
+        margin: 15px !important;
+        text-align: center;
+      }
+      .buttondiv {
+        /* border: 2px solid black; */
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .table-section {
+    padding: 10px;
+    /* border: 2px solid ivory; */
+
+    h1 {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .table-wrapper {
+      box-shadow: 0 4px 12px 2px rgba(85, 32, 4, 0.25);
+      /* padding: 10px; */
+      margin: auto;
+      /* border: 5px solid white; */
+      border-radius: 10px;
+      width: 100%;
+      color: white;
+      background-color: #0f1c42;
+      border-spacing: 2%;
+
+      thead {
+        background: #050913;
+        tr {
+          border: 2px white;
+          padding: 2% !important;
+        }
+      }
+
+      tr {
+        padding: 2%;
+      }
+
+      tbody tr:nth-child(even) {
+        background: #010613;
+      }
+
+      button {
+        margin: 4px;
+        width: 100px;
+        border-radius: 5px;
+        background-color: #1e3a8a;
+        color: white;
+
+        &:hover {
+          background-color: #0f1c42;
+          transition-duration: 0.5s;
+        }
+      }
+    }
+  }
+}
+
